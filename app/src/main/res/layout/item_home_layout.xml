@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.example.repos.data.ResponseMain" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="10dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="false"
+        app:rippleColor="#cfd8dc">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gordita_medium"
+                android:maxLines="1"
+                android:text="@{data.fullName}"
+                android:textColor="@color/text_color"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/lang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_lang2"
+                android:drawablePadding="6dp"
+                android:gravity="center"
+                android:visibility="@{data.language.length()==0? View.GONE :View.VISIBLE}"
+                android:fontFamily="@font/gordita_regular"
+                android:maxLines="1"
+                android:text="@{data.language}"
+                android:textColor="@color/secondary_color"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvname" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_star"
+                android:drawablePadding="6dp"
+                android:paddingStart="6dp"
+                android:gravity="center"
+                android:fontFamily="@font/gordita_regular"
+                android:maxLines="1"
+                android:text="@{String.valueOf(data.stargazersCount)}"
+                android:textColor="@color/secondary_color"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toRightOf="@+id/lang"
+                app:layout_constraintTop_toBottomOf="@+id/tvname" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="6dp"
+                android:drawableStart="@drawable/ic_fork"
+                android:drawablePadding="6dp"
+                android:gravity="center"
+                android:fontFamily="@font/gordita_regular"
+                android:maxLines="1"
+                android:text="@{String.valueOf(data.forks)}"
+                android:textColor="@color/secondary_color"
+                android:textSize="16sp"
+               app:layout_constraintLeft_toRightOf="@+id/count"
+                app:layout_constraintTop_toBottomOf="@+id/tvname" />
+
+
+
+            <ImageView
+                android:id="@+id/ic_bookmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bookmark_fill"
+                android:visibility="@{data.bookMark? View.VISIBLE :View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

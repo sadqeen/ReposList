@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Repos</string>
+    <string name="no_internet">It seems you are not connected to Internet!</string>
+    <string name="count">Stargazers Count:</string>
+</resources>

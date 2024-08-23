@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.example.repos.data.ResponseMain" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+        <ImageView
+            android:id="@+id/imgv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:minWidth="100dp"
+            android:minHeight="100dp"
+            bindImage="@{data.owner.avatarUrl}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/gordita_medium"
+            android:maxLines="1"
+            android:text="@{data.fullName}"
+            android:textColor="@color/text_color"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgv_icon" />
+
+
+
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/lang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_lang2"
+            android:drawablePadding="6dp"
+            android:gravity="center"
+            android:visibility="@{data.language.length()==0? View.GONE :View.VISIBLE}"
+            android:fontFamily="@font/gordita_regular"
+            android:maxLines="1"
+            android:text="@{data.language}"
+            android:textColor="@color/secondary_color"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvname" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_star"
+            android:layout_marginTop="6dp"
+            android:drawablePadding="6dp"
+            android:gravity="center"
+            android:fontFamily="@font/gordita_regular"
+            android:maxLines="1"
+            android:text="@{String.valueOf(data.stargazersCount)}"
+            android:textColor="@color/secondary_color"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lang" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/fork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_fork"
+            android:drawablePadding="6dp"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:fontFamily="@font/gordita_regular"
+            android:maxLines="1"
+            android:text="@{String.valueOf(data.forks)}"
+            android:textColor="@color/secondary_color"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/count" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/ic_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:button="@null"
+            android:checked="false"
+            android:drawableEnd="@drawable/bookmark_selector"
+            android:elevation="1dp"
+            android:gravity="end|center"
+            android:stateListAnimator="@animator/scale"
+            app:layout_constraintBottom_toBottomOf="@+id/fork"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvname" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
