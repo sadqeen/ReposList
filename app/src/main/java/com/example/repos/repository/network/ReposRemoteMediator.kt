@@ -41,7 +41,7 @@ class ReposRemoteMediator constructor(
         }
 
         try {
-            val response = apiService.getAllRepos("Bearer ${RetrofitApi.TOKEN}",page)
+            val response = apiService.getAllRepos(page)
             val endOfList = response.isEmpty()
             db.withTransaction {
                 if (loadType == LoadType.REFRESH) {
